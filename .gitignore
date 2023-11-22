@@ -1,8 +1,4 @@
-# Ignore .DS_Store files created by macOS
 .DS_Store
-
-# Ignore Python __pycache__ directories
 __pycache__/
-
-# Ignore the compare_simulators.py file
 compare_simulators.py
+Pipfile.lock
