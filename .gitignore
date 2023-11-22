@@ -2,3 +2,6 @@
 __pycache__/
 compare_simulators.py
 Pipfile.lock
+Algorithms/
+Parser/parsetab.py
+Parser/parser.out
