@@ -30,6 +30,9 @@ class QuantumCircuit():
         output += "Gates:\n"
         for gate in self.gates:
             output += str(gate) + "\n"
+
+        output  += "Total gates: " + str(len(self.gates)) + "\n"
+        output += "End of Circuit"
         return output
     
 
