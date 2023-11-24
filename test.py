@@ -12,12 +12,13 @@ files = [
     ("f2_232.qasm", 8, 1210),
     ("con1_216.qasm", 9, 958),
     ("mini_alu_305.qasm", 10, 177),
-    ("wim_266.qasm", 11, 990), 
-    ("cm152a_212.qasm", 12, 1225)]
-    # ("squar5_261.qasm", 13, 1997)]
-    # ("sym6_316.qasm", 14, 274)]
-    #("rd84_142.qasm", 15, 347),
-    #("cnt3-5_179.qasm", 16, 179)]
+    ("wim_266.qasm", 11, 990),
+    ("cm152a_212.qasm", 12, 1225),
+    ("squar5_261.qasm", 13, 1997),
+]
+# ("sym6_316.qasm", 14, 274)]
+# ("rd84_142.qasm", 15, 347),
+# ("cnt3-5_179.qasm", 16, 179)]
 
 
 # Number of times to run each file
@@ -28,11 +29,15 @@ runtimes = []
 qubits = []
 lines = []
 
+
 # Function to run the file and measure runtime
 def run_file(filename):
     start_time = time.time()
-    subprocess.run(["python", "simulator.py", "Algorithms/"+ filename], capture_output=True)
+    subprocess.run(
+        ["python", "simulator.py", "Algorithms/" + filename], capture_output=True
+    )
     return time.time() - start_time
+
 
 # Test each file multiple times and record the runtimes
 for file in files:
@@ -53,13 +58,13 @@ for file in files:
 filename = sys.argv[1]
 with open(f"Results/{filename}.txt", "w") as file:
     for i in range(len(files)):
-        file.write(f"{files[i][0]}: {runtimes[i]} s\n")  
+        file.write(f"{files[i][0]}: {runtimes[i]} s\n")
 
 # Plot runtime vs number of qubits
 plt.figure(figsize=(10, 5))
-plt.plot(qubits, runtimes, 'o-', label='Runtime vs Qubits')
-plt.xlabel('Number of Qubits')
-plt.ylabel('Runtime (s)')
-plt.title('Runtime vs Number of Qubits')
+plt.plot(qubits, runtimes, "o-", label="Runtime vs Qubits")
+plt.xlabel("Number of Qubits")
+plt.ylabel("Runtime (s)")
+plt.title("Runtime vs Number of Qubits")
 plt.legend()
-plt.savefig(f'Results/{filename}.png')
+plt.savefig(f"Results/{filename}.png")
