@@ -5,3 +5,5 @@ Pipfile.lock
 Algorithms/
 Parser/parsetab.py
 Parser/parser.out
+parsetab.py
+parser.out
