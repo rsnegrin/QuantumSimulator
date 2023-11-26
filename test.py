@@ -1,6 +1,7 @@
 import subprocess
 import time
 import matplotlib.pyplot as plt
+import matplotlib.cm as cm
 import sys
 
 files = [
@@ -15,10 +16,10 @@ files = [
     ("wim_266.qasm", 11, 990),
     ("cm152a_212.qasm", 12, 1225),
     ("squar5_261.qasm", 13, 1997),
+    ("sym6_316.qasm", 14, 274),
+    ("rd84_142.qasm", 15, 347),
+    ("cnt3-5_179.qasm", 16, 179),
 ]
-# ("sym6_316.qasm", 14, 274)]
-# ("rd84_142.qasm", 15, 347),
-# ("cnt3-5_179.qasm", 16, 179)]
 
 
 # Number of times to run each file
@@ -27,13 +28,13 @@ num_runs = 1
 # Store runtime, number of qubits, and number of lines
 runtimes = []
 qubits = []
-lines = []
+lines = [line for _, _, line in files]
 
 
 # Function to run the file and measure runtime
 def run_file(filename):
     start_time = time.time()
-    subprocess.run(
+    result = subprocess.run(
         ["python", "simulator.py", "Algorithms/" + filename], capture_output=True
     )
     return time.time() - start_time
@@ -60,11 +61,17 @@ with open(f"Results/{filename}.txt", "w") as file:
     for i in range(len(files)):
         file.write(f"{files[i][0]}: {runtimes[i]} s\n")
 
+norm = plt.Normalize(min(lines), max(lines))
+colors = cm.viridis(norm(lines))
+
+
 # Plot runtime vs number of qubits
 plt.figure(figsize=(10, 5))
-plt.plot(qubits, runtimes, "o-", label="Runtime vs Qubits")
+plt.title("Runtime vs Number of Qubits")
+sc = plt.scatter(qubits, runtimes, c=colors)
+cbar = plt.colorbar(sc)
+cbar.set_label("Number of Lines (Normalized)")
 plt.xlabel("Number of Qubits")
 plt.ylabel("Runtime (s)")
 plt.title("Runtime vs Number of Qubits")
-plt.legend()
 plt.savefig(f"Results/{filename}.png")
