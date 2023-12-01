@@ -9,11 +9,18 @@ def p_program(p):
     p[0] = ("program", p[4], p[5], p[6])  # qubits, bits, statements (gates)
 
     # Create a new circuit with the given number of qubits and bits
-    qc = QuantumCircuit(p[4], p[5])
+    n = max(
+        [gate[2] if gate[2] else 0 for gate in p[6]]
+        + [gate[1] if gate[1] else 0 for gate in p[6]]
+    )  # This is beacuse all files say 16 qubits
+
+    # To run the circuit with the ket simulator, uncomment the following line
+    qc = QuantumCircuit(n + 1, p[5])
 
     # Add the gates and other statements to the circuit
     for gate in p[6]:
         qc.add_gate(*gate)
+    qc.optimize()
     p[0] = qc
 
 

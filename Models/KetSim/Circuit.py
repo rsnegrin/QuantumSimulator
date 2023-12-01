@@ -96,12 +96,23 @@ class QuantumCircuit:
                 else:
                     ket[target] = "0"
 
-    # Check this function, is giving wrong results
     def optimize(self):
         """
         Optimize the circuit.
         """
-        pass
+        remove = []
+        for i in range(len(self.gates_array)):
+            try:
+                if self.gates_array[i] == self.gates_array[i + 1]:
+                    if i not in remove:
+                        remove.append(i)
+                    if i + 1 not in remove:
+                        remove.append(i + 1)
+            except IndexError:
+                pass
+        self.gates_array = [
+            gate for i, gate in enumerate(self.gates_array) if i not in remove
+        ]
 
     def __str__(self):
         output = "Quantum Circuit:\n"
