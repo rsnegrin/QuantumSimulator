@@ -16,6 +16,20 @@ The simulator supports two simulation models:
 - **Easy Mode Switching:** (In Development) Implementing a feature to easily switch between Matrix and Ket representations.
 - **Measurements:** (In Development) Working on incorporating quantum measurements.
 
+## Results
+
+### Quantum Simulation: Matrix Representation
+
+![Quantum Simulator - Matrix Representation](results/matrix.png)
+
+### Quantum Simulation: Ket Representation with Zero Optimization
+
+![Quantum Simulation - Ket Zero Optimization](results/kets.png)
+
+### Quantum Simulation: Ket Representation with Basic Optimization
+
+![Quantum Simulation - Ket Basic Optimization](results/some_opt.jpg)
+
 ## Development Status
 
 The Quantum Circuit Simulator is in active development. Current areas of focus include:
@@ -25,7 +39,10 @@ The Quantum Circuit Simulator is in active development. Current areas of focus i
 
 Additionally, you can run the `test.py` script to execute a series of algorithms. This script also plots the runtime in relation to the number of qubits and lines, providing valuable insights into the simulator's performance.
 
-Your contributions and feedback are invaluable in these areas.
+
+## Future Work
+
+More optimization is needed, and libraries like Pyzx can be used for this purpose.
 
 ## Usage
 
