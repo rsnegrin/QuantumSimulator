@@ -21,7 +21,7 @@ The simulator supports two simulation models:
 
 ## Results
 Additionally, you can run the `test.py` script to execute a series of algorithms. This script also plots the runtime in relation to the number of qubits and lines, providing valuable insights into the simulator's performance.
-The algorithms tested for these results are located in the `algorithms` folder. They have varying numbers of qubits and gates, which is why a color gradient is used to represent the number of gates.
+The algorithms tested for these results are located in the `Algorithms` folder. They have varying numbers of qubits and gates, which is why a color gradient is used to represent the number of gates.
 
 **Note:** The matrix representation circuit in this simulator can handle systems up to 13 qubits. Beyond this, the program may crash due to excessive memory usage.
 
